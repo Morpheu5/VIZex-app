@@ -3,26 +3,63 @@
 <head>
 
     <meta charset="utf-8">
-    <title>Your page title here :)</title>
+    <title>VIZEx</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900&amp;subset=latin-ext" rel="stylesheet">
 
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="one-half column">
-                <h4>Basic Page</h4>
-		<div id="graph"></div>
-                <p>This index.html page is a placeholder with the CSS, font and favicon. It's just waiting for you to add some content! If you need some help hit up the <a href="http://www.getskeleton.com">Skeleton documentation</a>.</p>
-		
-            </div>
+	<header class="site-header">
+	    <div class="container">
+	        <div class="row">
+	            <div class="twelve columns">
+	                <h4>VIZex</h4>
+					<h5>Your authority in Visibility rates</h5>
+				</div>
+	        </div>
+	    </div>
+	</header>
+	
+	<section id="graph-container">
+		<div class="container">
+			<div class="row">
+				<div class="twelve columns">
+					<div id="graph"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+    <div id="rates-row" class="section hero">
+        <div class="container">
+			<div class="row">
+				<div class="twelve columns">
+		            <div class="rate">1 VIZ = <span id="current-rate"></span> BTC</div>
+					<div class="update">Last updated: <span id="current-time"></span></div>
+		        </div>
+			</div>
         </div>
     </div>
+	
+	<div class="section" id="explanation">
+        <div class="container">
+			<div class="row">
+				<div class="offset-by-two eight columns">
+		            <h4>… but think about all the visibility!</h4>
+					<p><strong>What?</strong> Yes, there are people out there that still think
+						“visibility” is a currency, and that they can use it to pay for work
+						&mdash; especially freelance work! <strong>Outrageous idea!</strong> but
+						really hard to knock down.</p>
+					<p></p>
+		        </div>
+			</div>
+        </div>
+	</div>
 
 	<script src="/js/app.js" type="text/javascript"></script>
     

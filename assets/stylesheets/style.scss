@@ -1,9 +1,81 @@
+body {
+	background: url('/images/skies.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.section {
+	.container {
+		padding: 2em 0;
+	}
+}
+
+#explanation {
+	.container {
+		background: hsla(0, 0%, 100%, 0.9);
+	}
+}
+
+header.site-header {
+	color: white;
+	padding-top: 2em;
+}
+
 #graph {
-	background: lime;
 	width: 100%;
 	
-	canvas {
-		margin: 0 auto;
+	.red {
+		fill: #FB8C00;
+	}
+	
+	.green {
+		fill: #42A5F5;
+	}
+}
+
+#graph-container {
+	background: white;
+	padding-top: 2em;
+}
+
+.axis {
+	line {
+		fill: none;
+		stroke: gray;
+		stroke-width: 1;
+	}
+}
+
+.d3-tip {
+	background: black;
+	padding: 0.4em 0.8em;
+
+	span {
 		display: block;
+		font-size: 0.8em;
+		background: black;
+		color: white;
+	}
+}
+
+#rates-row {
+	background: hsla(210, 100%, 50%, 0.667);
+	color: white;
+	padding: 0;//-1em 0 1em 0;
+	font-family: "Maven Pro";
+	font-weight: 900;
+	
+	div {
+		text-align: center;
+		
+		.rate {
+			font-size: 2em;
+		}
+		
+		.update {
+			font-weight: 500;
+		}
 	}
 }
