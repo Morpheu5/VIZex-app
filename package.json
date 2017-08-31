@@ -5,8 +5,8 @@
   "author": "Andrea Franceschini",
   "license": "GPL-3.0",
   "scripts": {
-    "watch": "webpack-dev-server -w",
-    "dist": "webpack -p"
+    "watch": "webpack-dev-server -w --config webpack.dev.js",
+    "dist": "webpack -p --config webpack.prod.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -28,6 +28,7 @@
     "d3-tip": "^0.7.1",
     "lodash": "^4.17.4",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "webpack-merge": "^4.1.0"
   }
 }
