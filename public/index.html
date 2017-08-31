@@ -8,6 +8,23 @@
     <meta name="author" content="">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/images/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/images/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/images/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900&amp;subset=latin-ext" rel="stylesheet">
@@ -17,9 +34,12 @@
 	<header class="site-header">
 	    <div class="container">
 	        <div class="row">
-	            <div class="twelve columns">
-	                <h4>VIZex</h4>
-					<h5>Your authority in Visibility rates</h5>
+	            <div class="twelve columns logo-bundle">
+					<img src="/images/logo-200.png" width="100" height="100" alt="LOGO" />
+					<div class="copy">
+						<h4>VIZex</h4>
+						<h5>Your authority in Visibility rates</h5>
+					</div>
 				</div>
 	        </div>
 	    </div>
@@ -38,10 +58,11 @@
     <div id="rates-row" class="section hero">
         <div class="container">
 			<div class="row">
-				<div class="twelve columns">
+				<div class="six columns">
 		            <div class="rate">1 VIZ = <span id="current-rate"></span> BTC</div>
 					<div class="update">Last updated: <span id="current-time"></span></div>
 		        </div>
+				<div id="calculator"></div>
 			</div>
         </div>
     </div>
@@ -49,19 +70,69 @@
 	<div class="section" id="explanation">
         <div class="container">
 			<div class="row">
-				<div class="offset-by-two eight columns">
-		            <h4>… but think about all the visibility!</h4>
+				<div class="five columns offset-by-one">
+		            <h4>I’ll pay you in Visibility!</h4>
 					<p><strong>What?</strong> Yes, there are people out there that still think
-						“visibility” is a currency, and that they can use it to pay for work
-						&mdash; especially freelance work! <strong>Outrageous idea!</strong> but
-						really hard to knock down.</p>
-					<p></p>
+						“visibility”, also known as “exposure”, is a currency, and that
+						they can use it to pay for work &mdash; especially freelance work!
+						<strong>Outrageous idea!</strong> but really hard to knock down.</p>
+					<p>“<em>If you can’t fight them, join them</em>,” a wise person said.
+						This site provides a handy reference to effectively value visibility.
+						Now you can choose whether to take the visibility they offer you,
+						or politely ask to give you an adequate amount of another currency.
+						How neat is that?!</p>
 		        </div>
+				<div class="five columns">
+					<blockquote width="100%" class="twitter-tweet" data-lang="it">
+						<p lang="en" dir="ltr">You&#39;re doing it for the EXPOSURE <a href="https://t.co/2H2cb4H2vv">https://t.co/2H2cb4H2vv</a> <a href="https://t.co/OXg6WmchOQ">pic.twitter.com/OXg6WmchOQ</a></p>&mdash; Matthew Inman (@Oatmeal) <a href="https://twitter.com/Oatmeal/status/659815366558748676">29 ottobre 2015</a>
+					</blockquote>
+					<p style="font-size: 0.8em">Though we love him, we are in no way affiliated with this guy, but this comic explains the situation pretty well.</p>
+				</div>
 			</div>
         </div>
+        <div class="container" id="support">
+			<div class="row">
+				<div class="twelve columns">
+					<h4>Support us! Buy your visibility!</h4>
+					<p>If you add a message, eventually your visibility will show up somewhere in this page! Maybe…</p>
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="SWB9BUTCXJQPY">
+					<input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+					<img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
+					</form>
+					<p><a href="bitcoin:3Dge52HAMFmcA64TWZZFmFjPj2Q1i3p5GJ">bitcoin:3Dge52HAMFmcA64TWZZFmFjPj2Q1i3p5GJ</a></p>
+				</div>
+			</div>
+        </div>
+		
+		<div class="container" id="disclaimer">
+			<div class="row">
+				<div class="ten columns offset-by-one">
+					<h5>Disclaimer</h5>
+					<p>If it was not clear, <strong>this site is a joke. It’s fake. It doesn’t
+						work. You can’t buy visibility</strong>, for the same reason you can’t pay
+						someone in visibility. It simply is not a currency. It is not
+						legal tender anywhere in the World.</p>
+					<p>You can give us money if you want to support this campaign, it’ll
+						go towards paying for the server it runs on &mdash; nope, our ISP
+						does not need any more visibility, they are doing great already!</p>
+					<p>If you have ever been on the receiving end of a visibility offer,
+						feel free to share this with whoever made this offer to you. If
+						you have ever been on the offering end, please think again before
+						making such an offer.</p>
+					<p>And if you feel the sudden urge of sending us a message, feel free to
+						<a href="https://andreafranceschini.org/contact">get in touch!</a>
+						<strong>It costs you nothing to be kind, and it costs us nothing to give you
+						visibility if you are a jerk. 😏</strong></p>
+				</div>
+			</div>
+		</div>
+		
 	</div>
 
 	<script src="/js/app.js" type="text/javascript"></script>
+	<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     
 </body>
 </html>
