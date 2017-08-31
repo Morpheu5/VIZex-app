@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-	entry: './src/index.js',
+	entry: ['./src/index.js'],
 	output: {
 		filename: 'js/app.js',
 		path: path.resolve(__dirname, 'public')
@@ -23,7 +23,7 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['env']
+						presets: ['env', 'react']
 					}
 				}
 			},

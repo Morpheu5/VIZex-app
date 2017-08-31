@@ -6,21 +6,44 @@ body {
 	background-size: cover;
 }
 
+a {
+	color: hsla(210, 50%, 50%, 1.0);
+}
+
 .section {
 	.container {
 		padding: 2em 0;
 	}
 }
 
-#explanation {
-	.container {
-		background: hsla(0, 0%, 100%, 0.9);
-	}
-}
-
 header.site-header {
 	color: white;
-	padding-top: 2em;
+	padding-top: 1em;
+	
+	.logo-bundle {
+		position: relative;
+		img {
+			position: absolute;
+		}
+		.copy {
+			margin-left: 120px;
+			
+			h4 {
+				font-size: 4em;
+				padding: 0;
+				line-height: 1em;
+			}
+			
+			h5 {
+				font-size: 1em;
+				font-weight: 300;
+				line-height: 1em;
+				padding: 0;
+				margin-top: -0.5em;
+				margin-left: 0.5em;
+			}
+		}
+	}
 }
 
 #graph {
@@ -78,4 +101,25 @@ header.site-header {
 			font-weight: 500;
 		}
 	}
+	
+	input {
+		color: black;
+	}
+}
+
+#explanation {
+	.container {
+		background: hsla(0, 0%, 100%, 0.9);
+	}
+}
+
+#support {
+	.columns {
+		text-align: center;
+	}
+}
+
+#disclaimer {
+	font-size: 0.8em;
+	border-top: 1px solid hsla(210, 50%, 50%, 0.667);
 }
