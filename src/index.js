@@ -4,16 +4,13 @@ import * as d3 from 'd3'
 import * as d3Tip from 'd3-tip'
 d3.tip = require('d3-tip')
 
-import * as React from 'react'
-import ReactDOM from 'react-dom'
-
 import norm_css from '../assets/stylesheets/normalize.css'
 import skel_css from '../assets/stylesheets/skeleton.css'
 import style_css from '../assets/stylesheets/style.scss'
 
 let graphBuilder = (data) => {
-	let [width, height] = [960, 300];
-	let margins = { v: 20, h: 0 };
+	let [width, height] = [960, 400];
+	let margins = { v: 20, h: 20 };
 	let step = width/data.values.length;
 	let svg = d3.select("#graph").append("svg").attr("width", width).attr("height", height);
 	
@@ -49,59 +46,26 @@ let graphBuilder = (data) => {
 	.attr("transform", `translate(0, ${height-margins.v*2})`)
 	.call(xAxis);
 	
-	d3.select("#current-time").html((new Date()).toLocaleString());
+	// let y = d3.scaleLinear().range([0, height-margins.v*2]).domain([data.highest, data.lowest]);
+	// let yAxis = d3.axisRight().scale(y).ticks(height/100);
+	// svg.append("g")
+	// .attr("class", "y axis")
+	// .attr("transform", `translate(0, ${0})`)
+	// .call(yAxis);
+	
+	d3.select("#current-time").html(data.values[data.values.length-1].timestamp.toLocaleString());
 	d3.select("#current-rate").html(data.values[data.values.length-1].close);
 }
 
-class Calculator extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { rate: props.rate, viz: 1, btc: props.rate };
-
-		this.viz2btc = this.viz2btc.bind(this);
-		this.btc2viz = this.btc2viz.bind(this);
-	}
-		
-	viz2btc(e) {
-		let value = parseFloat(e.target.value);
-		this.setState({ viz: value, btc: _.round(value * this.state.rate, 4) })
-	}
-	
-	btc2viz(e) {
-		let value = parseFloat(e.target.value);
-		this.setState({ btc: value, viz: _.round(value / this.state.rate, 4) })
-	}
-	
-	render() {
-		return (<div>
-			<div className="three columns">
-				<label htmlFor="viz">VIZ</label>
-				<input className="u-full-width" type="number" min="0" name="viz" value={this.state.viz} onChange={this.viz2btc} />
-			</div>
-			<div className="three columns">
-				<label htmlFor="btc">BTC</label>
-				<input className="u-full-width" type="number" min="0" name="btc" value={this.state.btc} onChange={this.btc2viz} />
-			</div>
-		</div>);
-	}
-};
-
 document.addEventListener("DOMContentLoaded", () => {
 	let data = {};
-	let rate = 0;
-	axios.get('http://localhost:8080/data?n=48')
+	axios.get('http://localhost:8080/data')
 	.then(function(response) {
 		data = response.data;
 		data.values = _.forEach(data.values, (d) => {
 			d.timestamp = new Date(d.timestamp*1000);
 		});
-		rate = data.values[data.values.length-1].close;
 		graphBuilder(data);
-		
-		ReactDOM.render(
-			<Calculator rate={rate} />,
-			document.getElementById("calculator")
-		);
 	})
 	.catch(function(error) {
 		console.log(error);
