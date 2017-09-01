@@ -49,7 +49,7 @@ const graphBuilder = (data) => {
 	.attr("transform", `translate(0, ${height-margins.v*2})`)
 	.call(xAxis);
 	
-	d3.select("#current-time").html(data.values[data.values.length-1].timestamp.toLocaleString());
+	d3.select("#current-time").html((new Date()).toLocaleString());
 	d3.select("#current-rate").html(data.values[data.values.length-1].close);
 };
 
