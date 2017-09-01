@@ -10,15 +10,27 @@ import ReactDOM from 'react-dom'
 import norm_css from '../assets/stylesheets/normalize.css'
 import skel_css from '../assets/stylesheets/skeleton.css'
 import style_css from '../assets/stylesheets/style.scss'
+// ^ I don't understand anything of the above.
 
+// Fancy function to generate the d3 graph.
+// Can I just say that d3 is horrible? Honestly, it's just a nanometrically
+// thin coat of sugar away from building SVGs manually. I'm not sure what
+// this is all about. I had a p5 implementation and I thought "hey, let's
+// do this the fancy way" and I ended up with even more code!
 const graphBuilder = (data) => {
+	// This is genuinely cool. JS just got a quarter of a hair less icky.
 	const [width, height] = [960, 400];
 	const margins = { v: 20, h: 20 };
 	const step = width/data.values.length;
+	// ^ This is pretty much self-explanatory, right?
+
+	// The following is sheer madness.
 	const svg = d3.select("#graph").append("svg").attr("width", width).attr("height", height);
-	
+	// Seriously, I'm just building an SVG document, here.
+	// The string interpolation thing is neat. I just wish they didn't have to
+	// use back ticks, I assume it's to not break legacy (read: GODAWFUL) code.
 	const graphBox = svg.append("g").attr("id", "graphBox").attr("transform", `translate(${step/4}, 0)`);
-	
+
 	const lines = graphBox.append("g").attr("transform", `translate(${step/4}, 0)`).selectAll("line").data(data.values).enter();
 	const linesAttrs = lines.append("line")
 	.attr("x1", (d, i) => { return i * step })
@@ -48,11 +60,13 @@ const graphBuilder = (data) => {
 	.attr("class", "x axis")
 	.attr("transform", `translate(0, ${height-margins.v*2})`)
 	.call(xAxis);
-	
+
+	// When faking it, fake it well.
 	d3.select("#current-time").html((new Date()).toLocaleString());
 	d3.select("#current-rate").html(data.values[data.values.length-1].close);
 };
 
+// React is cool but weird.
 class Calculator extends React.Component {
 	constructor(props) {
 		super(props);
@@ -64,11 +78,13 @@ class Calculator extends React.Component {
 		
 	viz2btc(e) {
 		let value = parseFloat(e.target.value);
+		// Setting both values here because reasons...?
 		this.setState({ viz: value, btc: _.round(value * this.state.rate, 4) })
 	}
 	
 	btc2viz(e) {
 		let value = parseFloat(e.target.value);
+		// ... and here too.
 		this.setState({ btc: value, viz: _.round(value / this.state.rate, 4) })
 	}
 	
