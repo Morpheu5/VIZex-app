@@ -19,7 +19,8 @@ import style_css from '../assets/stylesheets/style.scss'
 // do this the fancy way" and I ended up with even more code!
 const graphBuilder = (data) => {
 	// This is genuinely cool. JS just got a quarter of a hair less icky.
-	const [width, height] = [960, 400];
+	// debugger;
+	const [width, height] = [Math.min(960, window.innerWidth), 400];
 	const margins = { v: 20, h: 20 };
 	const step = width/data.values.length;
 	// ^ This is pretty much self-explanatory, right?
