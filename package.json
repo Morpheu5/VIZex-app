@@ -6,7 +6,7 @@
   "license": "GPL-3.0",
   "scripts": {
     "watch": "webpack-dev-server -w --config webpack.dev.js",
-    "dist": "webpack -p --config webpack.prod.js"
+    "build": "webpack -p --config webpack.prod.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
