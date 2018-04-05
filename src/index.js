@@ -23,6 +23,10 @@ const graphBuilder = (data) => {
 	const [width, height] = [Math.min(960, window.innerWidth), 400];
 	const margins = { v: 20, h: 20 };
 	const step = width/data.values.length;
+	const lowest = data.lowest
+	const highest = data.highest
+	const hl_diff = highest - lowest
+	
 	// ^ This is pretty much self-explanatory, right?
 
 	// The following is sheer madness.
@@ -36,8 +40,8 @@ const graphBuilder = (data) => {
 	const linesAttrs = lines.append("line")
 	.attr("x1", (d, i) => { return i * step })
 	.attr("x2", (d, i) => { return i * step })
-	.attr("y1", (d, i) => { return height * (1 - d.low / data.highest) })
-	.attr("y2", (d, i) => { return height * (1 - d.high / data.highest) })
+	.attr("y1", (d, i) => { return height * (1 - (d.low - lowest)/hl_diff ) })
+	.attr("y2", (d, i) => { return height * (1 - (d.high - lowest)/hl_diff ) })
 	.attr("stroke", "black")
 	.attr("stroke-width", 1)
 	.exit();
@@ -49,8 +53,8 @@ const graphBuilder = (data) => {
 	.attr("class", (d, i) => { return d.open > d.close ? "red" : "green" })
 	.attr("x", (d, i) => { return i * step })
 	.attr("width", step/2)
-	.attr("y", (d, i) => { return d.open > d.close ? height * (1 - d.open / data.highest) : height * (1 - d.close / data.highest) })
-	.attr("height", (d, i) => { return d.open > d.close ? height * (d.open - d.close) / data.highest : (height * (d.close - d.open) / data.highest) })
+	.attr("y", (d, i) => { return d.open > d.close ? height * (1 - (d.open-lowest) / hl_diff) : height * (1 - (d.close-lowest) / hl_diff) })
+	.attr("height", (d, i) => { return d.open > d.close ? height * (d.open - d.close ) / hl_diff : (height * (d.close - d.open ) / hl_diff) })
 	.on("mouseover", tip.show)
 	.on("mouseout", tip.hide)
 	.exit();
@@ -104,7 +108,7 @@ class Calculator extends React.Component {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-	const url = process.env.NODE_ENV === 'production' ? 'https://api.vizex.co/data' : 'http://localhost:8080/data';
+	const url = process.env.NODE_ENV === 'production' ? 'https://api.vizex.co/data' : 'http://localhost:8080/data/1h/48';
 	axios.get(url)
 	.then(function(response) {
 		let data = response.data;
