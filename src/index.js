@@ -1,8 +1,7 @@
 import _ from 'lodash'
 import axios from 'axios'
 import * as d3 from 'd3'
-import * as d3Tip from 'd3-tip'
-d3.tip = require('d3-tip')
+// import * as d3Tip from 'd3-tip'
 
 import * as React from 'react'
 import ReactDOM from 'react-dom'
@@ -18,14 +17,16 @@ import style_css from '../assets/stylesheets/style.scss'
 // this is all about. I had a p5 implementation and I thought "hey, let's
 // do this the fancy way" and I ended up with even more code!
 const graphBuilder = (data) => {
+	// d3.tip = require('d3-tip');
+
 	// This is genuinely cool. JS just got a quarter of a hair less icky.
 	// debugger;
 	const [width, height] = [Math.min(960, window.innerWidth), 400];
 	const margins = { v: 20, h: 20 };
 	const step = width/data.values.length;
-	const lowest = data.lowest
-	const highest = data.highest
-	const hl_diff = highest - lowest
+	const lowest = data.lowest;
+	const highest = data.highest;
+	const hl_diff = highest - lowest;
 	
 	// ^ This is pretty much self-explanatory, right?
 
@@ -46,17 +47,17 @@ const graphBuilder = (data) => {
 	.attr("stroke-width", 1)
 	.exit();
 	
-	const tip = d3.tip().attr("class", "d3-tip").html((d) => { return `<span>open: ${d.open}</span><span>close: ${d.close}</span><span>${d.timestamp.toLocaleString()}</span>` })
+	// const _tip = d3.tip().attr("class", "d3-tip").html((d) => { return `<span>open: ${d.open}</span><span>close: ${d.close}</span><span>${d.timestamp.toLocaleString()}</span>` })
 	
-	const boxes = graphBox.append("g").call(tip).selectAll("rect").data(data.values).enter();
+	const boxes = graphBox.append("g").selectAll("rect").data(data.values).enter();
 	const boxesAttrs = boxes.append("rect")
 	.attr("class", (d, i) => { return d.open > d.close ? "red" : "green" })
 	.attr("x", (d, i) => { return i * step })
 	.attr("width", step/2)
 	.attr("y", (d, i) => { return d.open > d.close ? height * (1 - (d.open-lowest) / hl_diff) : height * (1 - (d.close-lowest) / hl_diff) })
 	.attr("height", (d, i) => { return d.open > d.close ? height * (d.open - d.close ) / hl_diff : (height * (d.close - d.open ) / hl_diff) })
-	.on("mouseover", tip.show)
-	.on("mouseout", tip.hide)
+	// .on("mouseover", _tip.show)
+	// .on("mouseout", _tip.hide)
 	.exit();
 	
 	const x = d3.scaleTime().range([step/2, width-step/2]).domain([data.values[0].timestamp, data.values[data.values.length-1].timestamp]);
